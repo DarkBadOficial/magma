@@ -75,3 +75,54 @@ stock AngleInRangeOfAngle(Float:a1, Float:a2, Float:range)
 	a1 -= a2;
 	return (a1 < range) && (a1 > -range);
 }
+
+stock minrand(min, max)
+{
+	return random(max - min) + min;
+}
+
+stock Float:Distance(Float:x1, Float:y1, Float:z1, Float:x2, Float:y2, Float:z2)
+	return floatsqroot((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))));
+
+stock Float:Distance2D(Float:x1, Float:y1, Float:x2, Float:y2)
+	return floatsqroot( ((x1-x2)*(x1-x2)) + ((y1-y2)*(y1-y2)) );
+
+stock Float:absoluteangle(Float:angle)
+{
+	while(angle < 0.0)angle += 360.0;
+	while(angle > 360.0)angle -= 360.0;
+	return angle;
+}
+
+stock IsPointInMapBounds(Float:x, Float:y, Float:z)
+{
+	if (-3000.0 <= x <= 3000.0)
+	{
+		if (-3000.0 <= y <= 3000.0)
+		{
+			if (-100.0 <= z <= 1000.0)
+			{
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+stock IsNumeric(const string[])
+{
+	for(new i,j=strlen(string);i<j;i++)if (string[i] > '9' || string[i] < '0') return 0;
+	return 1;
+}
+
+stock IsCharNumeric(c)
+{
+	if (c>='0'&&c<='9')return 1;
+	return 0;
+}
+
+stock IsCharAlphabetic(c)
+{
+	if ((c>='a'&&c<='z')||(c>='A'&&c<='Z'))return 1;
+	return 0;
+}

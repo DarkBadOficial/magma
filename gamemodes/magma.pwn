@@ -7,13 +7,6 @@
 #pragma option -(+
 #pragma option -;+
 
-/*
- * Debug Modes:
- *  - 0: There will be no debug messages either on the console or in the game.
- *  - 1: Debug messages will only appear on the console.
- *  - 2: Debug messages will appear on the console and in the game.
- */
-
 #pragma option -d3
 
 #pragma warning disable 239

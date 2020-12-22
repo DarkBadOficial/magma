@@ -50,10 +50,7 @@ stock strclr(string[])
 
 stock bool:strempty(const string[])
 {
-	if (string[0] == '\0' || (string[0] == '\1' && string[1] == '\0'))
-	{
-		return true;
-	}
+	if (string[0] == '\0' || (string[0] == '\1' && string[1] == '\0')) return true;
 	return false;
 }
 
@@ -61,44 +58,25 @@ stock strcount(const string[], character)
 {
 	new count = 0;
 	for(new c = 0, length = strlen(string); c < length; c++)
-	{
-		if (string[c] == character)
-		{
-			count++;
-		}
-	}
+		if (string[c] == character) count++;
+
 	return count;
 }
 
 stock strtolower(string[])
 {
 	for(new c = 0, length = strlen(string); c < length; c++)
-	{
 		string[c] = tolower(string[c]);
-	}
 }
 
 stock strtoupper(string[])
 {
 	for(new c = 0, length = strlen(string); c < length; c++)
-	{
 		string[c] = toupper(string[c]);
-	}
 }
 
-//TEXTDRAW CHARACTER WIDTHS
-/**
- * -DESCRIPTION:
- * 		-Proportional values for textdraw font ID 1.
- * -NOTES:
- * 		-These values are only correct when (Player)TextDrawSetProportional is set to 1.
- * 		-The final values depend on TextDrawLetterSize and TextDrawSetOutline. There is no easy way to calculate to additional 'thickness', since the outline of one character can, but will not always, flow over to the outline of the next.
- * 		-The returned widths should be multiplied by the texdraw letter size.
- * -CREDITS:
- * 		-GTA San Andreas/data/fonts.dat
- */
-static const MainString_CharacterWidths[] = { //Data taken from singleplayer fonts.dat file
-	 0, 15, 15, 15, 15, 15, 15, 15,	//NULL is not displayable because it breaks off the string, others display as a space
+static const MainString_CharacterWidths[] = {
+	0, 15, 15, 15, 15, 15, 15, 15,	//NULL is not displayable because it breaks off the string, others display as a space
 	15, 15, 15, 15, 15, 15, 15, 15,	//Display as a space
 	15, 15, 15, 15, 15, 15, 15, 15,	//Display as a space
 	15, 15, 15, 15, 15, 15, 15, 15,	//Display as a space
@@ -126,21 +104,15 @@ static const MainString_CharacterWidths[] = { //Data taken from singleplayer fon
 	19, 19, 19, 19, 19, 19, 21, 19,	//N O P Q R S T U
 	20, 32, 21, 19, 19, 19, 19, 19,	//V W X Y Z À Á Â
 	19, 29, 19, 19, 19, 19, 19,  9,	//Ã Æ Ç È É Ê Ë Ì
-	 9,  9,  9, 19, 19, 19, 19, 19,	//Í Î Ï Ò Ó Ô Ö Ù
+	9,  9,  9, 19, 19, 19, 19, 19,	//Í Î Ï Ò Ó Ô Ö Ù
 	19, 19, 19, 19, 21, 19, 10,  9	//Ú Û Ü ß Ñ ¿ ' .
 };
 
 stock GetCharacterWidth(c)
 {
-	if (c < 0)
-	{
-		return 0;
-	}
-
-	if (c >= sizeof(MainString_CharacterWidths))
-	{
-		return 20;
-	}
+	if (c < 0) return 0;
+	if (c >= sizeof(MainString_CharacterWidths))return 20;
+	
 	return MainString_CharacterWidths[c];
 }
 
@@ -148,13 +120,11 @@ stock GetStringWidth(const string[])
 {
 	new width = 0;
 	for(new c = 0, length = strlen(string); c < length; c++)
-	{
 		width += GetCharacterWidth(string[c]);
-	}
 	return width;
 }
 
-SpanishFix(const base[])
+stock SpanishFix(const base[])
 {
 	new result[1024];
 
@@ -214,4 +184,33 @@ SpanishFix(const base[])
         }
     }
     return result;
+}
+
+stock RandomString(strDest[], strLen = 10)
+{
+    while(strLen --)
+        strDest[strLen] = random(2) ? (random(26) + (random(2) ? 'a' : 'A')) : (random(10) + '0');
+}
+
+
+stock atos(a[], size, s[], len = sizeof(s))
+{
+	s[0] = '[';
+
+	for(new i; i < size; i++)
+	{
+		if(i != 0)
+			strcat(s, ", ", len);
+
+		format(s, len, "%s%d", s, a[i]);
+	}
+
+	s[strlen(s)] = ']';
+}
+
+stock atosr(a[], size = sizeof(a))
+{
+	new s[256];
+	atos(a, size, s);
+	return s;
 }

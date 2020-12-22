@@ -130,7 +130,7 @@ stock ClearPlayerGameTexts(playerid)
     return 0;
 }
 
-stock PlaySoundForPlayersInRange(soundid, Float:x, Float:y, Float:z, Float:range = 50.0, worldid = VIRTUAL_WORLD_NORMAL, interiorid = INTERIOR_NORMAL)
+stock PlaySoundForPlayersInRange(soundid, Float:x, Float:y, Float:z, Float:range = 50.0, worldid, interiorid)
 {
     for(new playerid = 0, highestPlayerid = GetPlayerPoolSize(); playerid <= highestPlayerid; playerid++)
     {
@@ -139,5 +139,47 @@ stock PlaySoundForPlayersInRange(soundid, Float:x, Float:y, Float:z, Float:range
             PlayerPlaySound(playerid, soundid, x, y, z);
         }
     }
+    return 1;
+}
+
+stock IsValidUsername(const name[])
+{
+    new
+        i,
+        len = strlen(name);
+
+    if (len < 3)
+        return 0;
+
+    while(i < len)
+    {
+        switch(name[i])
+        {
+            case 'a'..'z', 'A'..'Z', '0'..'9', '(', ')', '[', ']', '.', '_', '$', '=', '@':
+                i++;
+
+            default:
+                return 0;
+        }
+    }
+
+    return 1;
+}
+
+stock IsPlayerIdle(playerid)
+{
+    switch(GetPlayerAnimationIndex(playerid))
+    {
+        case 320, 471, 1164, 1183, 1188, 1189:
+            return 1;
+    }
+    return 0;
+}
+
+stock IsValidSkin(skinid)
+{
+    if (skinid == 74 || skinid > 299 || skinid < 0)
+        return 0;
+
     return 1;
 }
