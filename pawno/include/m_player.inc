@@ -39,7 +39,7 @@ stock bool:IsFakeClient(playerid)
     gpci(playerid, temp_id, sizeof(temp_id));  
     for(new i = 0; i < strlen(temp_id); i++)  
     {  
-        if(temp_id[i] >= '0' && temp_id[i] <= '9')  temp_num++;  
+        if (temp_id[i] >= '0' && temp_id[i] <= '9')  temp_num++;  
     }  
     return (temp_num >= 30 || strlen(temp_id) <= 30) ? true : false;
 }
@@ -89,7 +89,7 @@ stock bool:PlayerHasSwimAnim(playerid)
 {
     new lib[16], anims[32];
     GetAnimationName(GetPlayerAnimationIndex(playerid), lib, sizeof(lib), anims, sizeof(anims));
-    if(!isnull(lib) && !strcmp(lib, "SWIM")) return false;
+    if (!isnull(lib) && !strcmp(lib, "SWIM")) return false;
     switch(GetPlayerAnimationIndex(playerid))
     {
        case 1538..1542, 1544, 1250, 1062: return false;
@@ -106,7 +106,7 @@ stock ClearPlayerChatBox(playerid, ammount = 20)
 
 stock ClearPlayerKillFeed(playerid)
 {
-    if(IsPlayerConnected(playerid))
+    if (IsPlayerConnected(playerid))
     {
         for(new i = 0; i != 5; i++)
         {
@@ -119,7 +119,7 @@ stock ClearPlayerKillFeed(playerid)
 
 stock ClearPlayerGameTexts(playerid)
 {
-    if(IsPlayerConnected(playerid))
+    if (IsPlayerConnected(playerid))
     {
         for(new i = 0; i != 0; i++)
         {
@@ -134,7 +134,7 @@ stock PlaySoundForPlayersInRange(soundid, Float:x, Float:y, Float:z, Float:range
 {
     for(new playerid = 0, highestPlayerid = GetPlayerPoolSize(); playerid <= highestPlayerid; playerid++)
     {
-        if(IsPlayerConnected(playerid) && GetPlayerInterior(playerid) == interiorid && worldid == GetPlayerVirtualWorld(playerid) && IsPlayerInRangeOfPoint(playerid, range, x, y, z))
+        if (IsPlayerConnected(playerid) && GetPlayerInterior(playerid) == interiorid && worldid == GetPlayerVirtualWorld(playerid) && IsPlayerInRangeOfPoint(playerid, range, x, y, z))
         {
             PlayerPlaySound(playerid, soundid, x, y, z);
         }
