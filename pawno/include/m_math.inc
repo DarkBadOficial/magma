@@ -29,7 +29,7 @@ stock bool:IsNaN(number)
 
 stock GetPointOnEdgeOfCircle(&Float:x, &Float:y, Float:r, Float:a, bool:isGTAAngle = false)
 {
-	if(isGTAAngle)
+	if (isGTAAngle)
 	{
 		a += 90.0;
 	}
