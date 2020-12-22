@@ -38,6 +38,9 @@
 
 // Magma libraries
 #include <m_player>
+#include <m_math>
+#include <m_string>
+#include <m_color>
 
 // Main addon
 #include "../../addons/logger/main.pwn" // Author: https://github.com/Boorz94
