@@ -30,3 +30,20 @@
 *.exe
 *.out
 *.app
+*.amx
+*.zip
+*.rar
+
+# Log and databases
+*.log
+*.db
+*.cadb
+
+# Misc path
+/server_log.*
+/crashinfo.*
+/pawno/*
+/logs
+!/pawno/include
+/npcmodes
+.vscode/
