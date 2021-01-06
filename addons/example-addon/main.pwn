@@ -14,6 +14,10 @@ public OnGameModeInit()
 	AddPlayerClass(35, 1958.3783, 1343.1572, 15.3746, 270.1425, 0, 0, 0, 0, -1, -1);
 	AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 270.1425, 0, 0, 0, 0, -1, -1);
 
+	UsePlayerPedAnims();
+	ShowPlayerMarkers(PLAYER_MARKERS_MODE_GLOBAL);
+	SetNameTagDrawDistance(30.0);
+
 	#if defined EA_OnGameModeInit
 		return EA_OnGameModeInit();
 	#else

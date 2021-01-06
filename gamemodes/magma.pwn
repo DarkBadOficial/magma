@@ -6,6 +6,7 @@
 
 #pragma option -(+
 #pragma option -;+
+//#pragma option -l
 
 #pragma option -d3
 
@@ -34,10 +35,17 @@
 #include <m_math>
 #include <m_string>
 #include <m_color>
+#include <m_macros>
 
 // Main addon
 #include "../../addons/logger/main.pwn" // Author: https://github.com/Boorz94
 #include "../../addons/main.pwn"
+
+callback:JoseLuis(Float:x, var, bobo)
+{
+	print("hola");
+	return 1;
+}
 
 main()
 {

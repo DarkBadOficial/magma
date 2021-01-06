@@ -39,7 +39,8 @@
 *.db
 *.cadb
 
-# Misc path
+# Misc
+*.asm
 /server_log.*
 /crashinfo.*
 /pawno/*
