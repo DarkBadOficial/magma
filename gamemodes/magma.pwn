@@ -41,12 +41,6 @@
 #include "../../addons/logger/main.pwn" // Author: https://github.com/Boorz94
 #include "../../addons/main.pwn"
 
-callback:JoseLuis(Float:x, var, bobo)
-{
-	print("hola");
-	return 1;
-}
-
 main()
 {
 	SetGameModeText(MAGMA_VERSION);
